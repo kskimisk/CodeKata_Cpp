@@ -1,0 +1,3 @@
+﻿  Main.cpp
+C:\Users\kimis\Desktop\spa_Unreal_class\cpp_class\CodeKata_260430\Main.cpp(12,40): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  CodeKata_260430.vcxproj -> C:\Users\kimis\Desktop\spa_Unreal_class\cpp_class\CodeKata_260430\x64\Debug\CodeKata_260430.exe
