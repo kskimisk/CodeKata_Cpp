@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\kimis\\Desktop\\Unreal_class\\Cpp_mission\\Cpp__CodeKata\\CodKata_260506\\",
+  "WorkspaceRootPath": "C:\\Users\\kimis\\Desktop\\Unreal_class\\CodeKata\\CodKata_260506\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8101D0C9-6748-4D3F-9F3F-4FCBDF894180}|CodKata_260506.vcxproj|C:\\Users\\kimis\\Desktop\\Unreal_class\\Cpp_mission\\Cpp__CodeKata\\CodKata_260506\\CodKata_260506.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8101D0C9-6748-4D3F-9F3F-4FCBDF894180}|CodKata_260506.vcxproj|solutionrelative:CodKata_260506.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{8101D0C9-6748-4D3F-9F3F-4FCBDF894180}|CodKata_260506.vcxproj|C:\\Users\\kimis\\Desktop\\Unreal_class\\CodeKata\\CodKata_260506\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8101D0C9-6748-4D3F-9F3F-4FCBDF894180}|CodKata_260506.vcxproj|solutionrelative:Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CodKata_260506.cpp",
-              "DocumentMoniker": "C:\\Users\\kimis\\Desktop\\Unreal_class\\Cpp_mission\\Cpp__CodeKata\\CodKata_260506\\CodKata_260506.cpp",
-              "RelativeDocumentMoniker": "CodKata_260506.cpp",
-              "ToolTip": "C:\\Users\\kimis\\Desktop\\Unreal_class\\Cpp_mission\\Cpp__CodeKata\\CodKata_260506\\CodKata_260506.cpp",
-              "RelativeToolTip": "CodKata_260506.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Main.cpp",
+              "DocumentMoniker": "C:\\Users\\kimis\\Desktop\\Unreal_class\\CodeKata\\CodKata_260506\\Main.cpp",
+              "RelativeDocumentMoniker": "Main.cpp",
+              "ToolTip": "C:\\Users\\kimis\\Desktop\\Unreal_class\\CodeKata\\CodKata_260506\\Main.cpp",
+              "RelativeToolTip": "Main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-06T00:08:23.623Z",
+              "WhenOpened": "2026-05-06T01:07:25.413Z",
               "EditorCaption": ""
             }
           ]

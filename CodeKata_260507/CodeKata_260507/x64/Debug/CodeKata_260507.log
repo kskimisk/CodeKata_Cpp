@@ -1,0 +1,3 @@
+﻿  Main.cpp
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\kimis\Desktop\Unreal_class\CodeKata\CodeKata_260507\x64\Debug\CodeKata_260507.exe : fatal error LNK1120: 1 unresolved externals
