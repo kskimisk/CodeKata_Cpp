@@ -1,0 +1,20 @@
+#include <string>
+#include <vector>
+#include <cassert>
+
+using namespace std;
+
+bool solution(int x) {
+    assert(1<=x && x<=10000);
+true;
+    int a = x;
+    int n = 0;
+    while(a > 0){
+        int i=0;
+        i=a%10;
+        n+=i;
+        a/=10;
+    }
+    bool answer = (x % n ==0);
+    return answer;
+}
