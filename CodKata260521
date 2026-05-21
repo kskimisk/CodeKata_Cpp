@@ -1,0 +1,24 @@
+#include <string>
+#include <vector>
+#include <cassert>
+
+using namespace std;
+
+long long solution(int a, int b) {
+    long long answer = 0;
+    assert(-10000000<=a && a<=10000000 && -10000000<=b && b<=10000000);
+    int i=0;
+    if(a<b){
+        for(i=a; i<=b; i++){
+          answer+=i;  
+        }
+    }
+    else if(a>b){
+        for(i=b; i<=a; i++){
+          answer+=i;
+        }
+    }
+    else
+        answer=a;
+    return answer;
+}
