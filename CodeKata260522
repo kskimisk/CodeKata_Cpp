@@ -1,0 +1,35 @@
+#include <string>
+#include <vector>
+#include <cassert>
+
+using namespace std;
+
+int solution(int num) {
+    assert(1 <= num && num < 8000000);
+    
+    if (num == 1) {
+        return 0;
+    }
+
+    long long n = num; 
+    int answer = 0;
+    
+    for (int count = 1; count <= 500; count++) {
+        if (n % 2 == 0) {
+            n /= 2;
+        } else {
+            n = n * 3 + 1;
+        }
+        
+        if (n == 1) {
+            answer = count;
+            break;
+        }
+    }
+    
+    if (n != 1) {
+        answer = -1;
+    }
+    
+    return answer; 
+}
