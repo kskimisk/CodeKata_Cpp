@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+#include <algorithm> // sort를 위해 추가.
+
+using namespace std;
+
+vector<int> solution(vector<int> arr, int divisor) {//벡터는 입력된 거고
+    vector<int> answer; //answer라는 이름의 벡터 공간을 선언한다.
+    for (int i = 0; i < arr.size(); i++) { //반복조건 : i 선언. i가 벡터 사이즈보다 작을 때까지. 반복 시 i 하나씩 증가. -> arr의 i번째 원소를 추출하기 위함.
+        if(arr[i] % divisor == 0){ //arr의 i번째 원소가 divisor로 나눌 때 나누어 떨어진다면.
+            answer.push_back(arr[i]); // arr의 i번째 원소를 answer에 넣기.
+        }
+    }
+    
+    if (answer.empty()){ // 만약 조건문이 끝났을 때, answer이 비어있다면,
+        answer.push_back(-1); // -1을 출력
+    }
+    else{
+        sort(answer.begin(), answer.end()); // 그게 아니라면, answer의 숫자들을 오름차순으로 정렬.
+    }
+    return answer;
+}
