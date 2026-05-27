@@ -1,0 +1,16 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(vector<int> absolutes, vector<bool> signs) {
+    int answer = 0; //왜 answer를 123456789로 했었는지 모르겠음.
+    for(int i=0; i<absolutes.size(); i++){ //absoutes와 signs의 길이는 같으니까 하나만.
+        if(signs[i] == true){
+            answer+=absolutes[i];
+        }
+        else
+            answer-=absolutes[i]; // 생각해보니까 -1 곱할 필요없이 그냥 빼면 되잖아.
+    }
+    return answer;
+}
