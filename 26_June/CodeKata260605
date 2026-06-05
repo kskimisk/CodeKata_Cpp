@@ -1,0 +1,28 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int left, int right) {
+    int answer = 0;
+    vector<int>middle;
+    for(int i=left; i <=right; i++){
+        middle.push_back(i);
+    }
+    for(int j=0; j<middle.size(); j++){
+        int divisor_count = 0;
+        for(int k = 1; k <= middle[j]; k++) {
+            if(middle[j] % k == 0) {
+                divisor_count++;
+            }
+        }
+        
+if(divisor_count % 2 == 0){
+            answer+=middle[j];
+        }
+        else
+            answer-=middle[j];
+    }
+    
+    return answer;
+}
