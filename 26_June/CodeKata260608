@@ -1,0 +1,20 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+string solution(string s) {
+    string answer = "";
+    vector<int>lit;
+    for(int i=0; i<s.size(); i++){
+        int n = static_cast<int>(s[i]);
+        lit.push_back(n);
+    }
+    sort(lit.begin(), lit.end());
+    for(int j=lit.size()-1; j>=0; j--){
+        char l = static_cast<char>(lit[j]);
+        answer.push_back(l);
+    }
+    return answer;
+}
