@@ -1,1 +1,26 @@
+#include <string>
+#include <vector>
 
+using namespace std;
+
+bool solution(string s) {
+    // [조건 1] 길이가 4 혹은 6인지 먼저 검사 (아니면 바로 false 반환)
+    if (s.length() != 4 && s.length() != 6) {
+        return false;
+    }
+    
+    bool answer = true;
+    
+    // [조건 2] 문자열을 돌며 숫자가 아닌 녀석이 있는지 검사
+    for (int i = 0; i < s.length(); i++) {
+        // 작은따옴표('')를 붙여서 '문자 0'과 '문자 9' 사이인지 비교합니다!
+        answer = (s[i] >= '0' && s[i] <= '9') ? true : false;
+        
+        // 만약 단 하나라도 숫자가 아니라면(false), 더 볼 것도 없이 종료!
+        if (answer == false) {
+            break; 
+        }
+    }
+    
+    return answer;
+}
