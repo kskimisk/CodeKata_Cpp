@@ -1,0 +1,23 @@
+#include <string>
+#include <vector>
+#include <cmath> 
+
+using namespace std;
+
+int solution(int n) {
+    int answer = 0;
+    vector<int> base;
+    
+    while (n > 0) {
+        base.push_back(n % 3);
+        n /= 3;
+    }
+    
+    int idx = 0;
+    for (int i = base.size() - 1; i >= 0; i--) {
+        answer += base[i] * pow(3, idx);
+        idx++;
+    }
+    
+    return answer;
+}
