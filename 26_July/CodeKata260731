@@ -1,0 +1,136 @@
+﻿// 프로그래머스 - 공원산책(https://school.programmers.co.kr/learn/courses/30/lessons/172928)
+
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(vector<string> park, vector<string> routes) {
+    int H = park.size();       // 공원의 세로 전체 길이
+    int W = park[0].size();    // 공원의 가로 전체 길이
+    
+    int i = 0, j = 0; // i는 세로(y), j는 가로(x)
+
+    // 1. 시작 지점(S) 찾기
+    for (int r = 0; r < H; r++) {
+        for (int c = 0; c < W; c++) {
+            if (park[r][c] == 'S') {
+                i = r;
+                j = c;
+            }
+        }
+    }
+
+    // 2. 명령어 하나씩 꺼내서 실행
+    for (string route : routes) {
+        char op = route[0];             // 방향 (N, S, W, E)
+        int n = route[2] - '0';         // 이동할 칸 수 (문자를 숫자로 변환)
+
+        // 3. 임시 변수에 현재 위치 저장 (실패 시 원상복구를 위함)
+        int temp_i = i;
+        int temp_j = j;
+        bool success = true; // 이동 성공 여부 깃발
+
+        // 4. 회원님 아이디어: n칸만큼 1칸씩 직접 이동해보기
+        for (int step = 0; step < n; step++) {
+            if (op == 'E') temp_j++;       // 동쪽: 가로 증가
+            else if (op == 'W') temp_j--;  // 서쪽: 가로 감소
+            else if (op == 'S') temp_i++;  // 남쪽: 세로 증가
+            else if (op == 'N') temp_i--;  // 북쪽: 세로 감소
+
+            // 5. 검증: 공원 밖을 벗어나거나 장애물(X)을 만났다면?
+            if (temp_i < 0 || temp_i >= H || temp_j < 0 || temp_j >= W || park[temp_i][temp_j] == 'X') {
+                success = false; // 이동 실패 선언
+                break;           // 더 이상 검사할 필요 없이 즉시 중단
+            }
+        }
+
+        // 6. 도중에 한 번도 실패하지 않았다면 실제 위치 갱신
+        if (success) {
+            i = temp_i;
+            j = temp_j;
+        }
+    }
+
+    // 7. 모든 명령을 수행한 후의 i, j를 벡터로 출력
+    return {i, j};
+}
+
+
+/*
+풀이
+1. 준비: 공원(park)을 뒤져서 시작 위치 'S'의 좌표를 찾아 i, j에 저장한다.
+2.명령 읽기: routes에서 명령을 하나씩 꺼낸다. (예: "E 5")
+3. 임시 이동 (가장 중요!): * 현재 위치 i, j를 훼손하지 않기 위해 가짜 변수 temp_i, temp_j를 만든다.
+    1) 이동하려는 칸 수(5)만큼 1칸씩 temp_i나 temp_j를 더하거나 빼본다.
+    2) 검증: 만약 1칸 이동했는데 그곳이 공원 밖이거나 'X'라면? ->️ 즉시 "이동 실패!"를 선언하고 이 명령은 버린다.
+4. 위치 갱신: n칸을 이동하는 동안 한 번도 실패하지 않았다면, 진짜 위치 i, j를 temp_i, temp_j로 덮어씌워 진짜로 이동시킨다.
+5. 결과 반환: 모든 명령이 끝나면 {i, j}를 반환한다.
+
+ */
+ 
+ 
+ /* 제미나이 추천코드
+ #include <string>
+ #include <vector>
+ 
+ using namespace std;
+ 
+ vector<int> solution(vector<string> park, vector<string> routes) {
+     int H = park.size();    // 공원의 세로 길이
+     int W = park[0].size(); // 공원의 가로 길이
+     
+     int y = 0, x = 0; // 로봇 강아지의 현재 위치 (세로, 가로)
+ 
+     // 1. 시작 위치 'S' 찾기
+     for (int i = 0; i < H; ++i) {
+         for (int j = 0; j < W; ++j) {
+             if (park[i][j] == 'S') {
+                 y = i;
+                 x = j;
+                 break;
+             }
+         }
+     }
+ 
+     // 2. 명령어 순서대로 수행
+     for (string route : routes) {
+         char op = route[0];            // 방향 (N, S, W, E)
+         int n = route[2] - '0';        // 이동할 칸 수 (문자를 숫자로 변환)
+ 
+         // 방향에 따른 이동량 설정 (dy: 세로, dx: 가로)
+         int dy = 0, dx = 0;
+         if (op == 'N') dy = -1;
+         else if (op == 'S') dy = 1;
+         else if (op == 'W') dx = -1;
+         else if (op == 'E') dx = 1;
+ 
+         // 이동을 테스트해 볼 임시 변수
+         int ny = y;
+         int nx = x;
+         bool isPossible = true; // 이동 가능한지 판단하는 플래그
+ 
+         // 3. n번만큼 1칸씩 이동하며 검증
+         for (int i = 0; i < n; ++i) {
+             ny += dy;
+             nx += dx;
+ 
+             // 공원을 벗어나거나, 장애물을 만나는 경우
+             if (ny < 0 || ny >= H || nx < 0 || nx >= W || park[ny][nx] == 'X') {
+                 isPossible = false; // 이동 불가 판정
+                 break;              // 더 이상 이동해 볼 필요 없음
+             }
+         }
+ 
+         // 4. 장애물도 없고 공원도 안 벗어났다면 실제 위치 업데이트
+         if (isPossible) {
+             y = ny;
+             x = nx;
+         }
+     }
+ 
+     // 최종 위치 {세로, 가로} 반환
+     return {y, x};
+ }
+ 
+ */
