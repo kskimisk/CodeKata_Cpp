@@ -14,7 +14,7 @@ string solution(string s) {
     vector<int> numbers;
     
     // 1단계: 문자열을 공백 기준으로 쪼개서 진짜 숫자(int)로 변환해 벡터에 담기 (파싱)
-    while (ss >> token) {
+    while (ss >> token) { // ss와 token의 크기 비교가 아니라, cout 처럼 ss에서 자른 문자를 token으로 보내는 거.
         numbers.push_back(stoi(token)); // stoi가 '-' 부호까지 알아서 처리함
     }
     
