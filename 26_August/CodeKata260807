@@ -1,0 +1,84 @@
+﻿//260807 프로그래머스 - 피보나치 수
+//https://school.programmers.co.kr/learn/courses/30/lessons/12945
+
+
+#include <vector>
+
+using namespace std;
+
+    // 전역(또는 클래스 멤버) 공간에 이미 계산된 값을 저장할 '캐시(Cache)' 가방 생성.
+    // 초기값으로 0과 1을 넣어두기.
+vector<int> cache = {0, 1}; 
+
+int solution(int n) {
+      // 1. 이미 예전에 계산해서 가방에 저장해둔 값이라면? 
+      // 계산하지 말고 가방에서 바로 꺼내줍니다! (엄청난 속도 향상)
+    if (n < cache.size()) {
+        return cache[n];
+    }
+    
+      // 2. 가방에 없는 숫자라면? (처음 요청받은 숫자인 경우.)
+      // 현재 가방에 있는 마지막 숫자부터 n까지 추가로 계산해서 가방 채우기.
+    for (int i = cache.size(); i <= n; i++) {
+        int next_val = (cache[i-1] + cache[i-2]) % 1234567;
+        cache.push_back(next_val);
+    }
+    
+    return cache[n];
+}
+
+
+
+
+/*
+피보나치 수는 F(0) = 0, F(1) = 1일 때, 1 이상의 n에 대하여 F(n) = F(n-1) + F(n-2) 가 적용되는 수 입니다.
+
+예를들어
+
+F(2) = F(0) + F(1) = 0 + 1 = 1
+F(3) = F(1) + F(2) = 1 + 1 = 2
+F(4) = F(2) + F(3) = 1 + 2 = 3
+F(5) = F(3) + F(4) = 2 + 3 = 5
+와 같이 이어집니다.
+
+2 이상의 n이 입력되었을 때, n번째 피보나치 수를 1234567으로 나눈 나머지를 리턴하는 함수, solution을 완성해 주세요.
+
+ */
+ 
+ /* 풀이
+ 1. 피보나치 수열.
+ 2. n은 2부터 시작이네.
+ 3. n번째 피보나치 수를 1234567로 나눈 나머지를 리턴하라는 것은, 그냥 피보나치수를 꺼내라는 거 아닌가.
+ 4. 문제가 이상. n번째 피보나치수를 구하라는 것은 0 ~ 100,000가지 순차적으로 나열된 피보나치수들을 보이라는 건가.
+ 5. 아니면 F(n)=F(n-1) + F(n-2)를 만족하는 n에 대하여, 나머지값을 리턴하라는 건가.
+ 6. 같은 거구나.
+ 7. 찾다보니까
+ unsigned int fibonacci_rcsv(unsigned int n) {
+     if (n <= 1) return n; // n이 1보다 작을 때는 해당 값을 그대로 반환한다.
+     else return fibonacci_rcsv(n - 2) + fibonacci_rcsv(n - 1);
+ }
+ 이런 식이 나오는데, 이건 뭐지.
+ unsigned int fibonacci_iter(unsigned int n) {
+     if (n <= 1) return n; // n이 1보다 작을 때는 해당 값을 그대로 반환한다.
+     else {
+         int result = 0;
+         int iterA = 0, iterB = 1;
+ 
+         for (int i = 2; i <= n; i++) {
+             result = iterA + iterB;
+             iterA = iterB;
+             iterB = result;
+         } // n항의 값을 구한다.
+ 
+         return result;
+     }
+ }
+ 이 식은 뭐고.
+ 이걸로 하는 게 원래 방식일까.
+  */
+  
+  /*
+  잘못 생각한 것.
+  1. 컴퓨터는 단순 반복 작업을 해도 된다.
+    - For문으로 처음부터 쭉 돌리는 작업을 명령해도 무리가 아님.
+   */
