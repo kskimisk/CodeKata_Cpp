@@ -1,0 +1,33 @@
+//CodeKata260811 - 예상대진표
+//https://school.programmers.co.kr/learn/courses/30/lessons/12985
+
+#include <iostream>
+
+using namespace std;
+
+int solution(int n, int a, int b)
+{
+    int answer = 0;
+
+       // A와 B의 번호가 같아지면 만난 것이므로, 같지 않을 때까지 계속 반복.
+    while (a != b) 
+    {
+         // 다음 라운드의 숫자. 홀짝 구분 없이 /2 하면 다음 라운드에 쓸 숫자.
+        a = (a + 1) / 2;
+        b = (b + 1) / 2;
+        
+           // 6. 라운드가 진행될 때마다 정답 카운트 1 증가
+        answer++;
+    }
+
+    return answer;
+}
+
+
+
+//1. n이 굳이 필요할까?
+//2.a-b가 1이 될 때까지 For문.
+//3.a가 2로 나누어떨어지면,/2.
+//4.a가 2로 나누어떨어지지않으면 +1 한 다음 /2.
+// 5. b도 반복.
+// 6.For문 돌 때마다 answer ++
